@@ -200,8 +200,14 @@ can raise an appropriate exception -- a Match_failure or
 Invalid_argument exception for instance.
 ......................................................................*)
 
-let max_list (lst : int list) : int =
-  failwith "max_list not implemented" ;;
+let rec max_list (lst : int list) : int =
+  match lst with
+    | [] -> failwith "empty"
+    | [a] -> a
+    | hd::tl -> 
+      if(hd > max_list tl) then hd
+      else max_list tl;;
+
 
 (*......................................................................
 Exercise 9: Define a function zip, that takes two int lists and
