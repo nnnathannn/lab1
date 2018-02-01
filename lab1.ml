@@ -178,8 +178,10 @@ to the list containing the elements 3, 4, and 5? You'll want to
 replace the "[]" with the correct functional call.
 ......................................................................*)
 
-let square_all (lst : int list) : int list =
-  failwith "square_all not implemented" ;;
+let rec square_all (lst : int list) : int list =
+  match lst with
+    | [] -> []
+    | hd::tl -> (hd*hd) :: square_all tl
 
 let exercise6 = [] ;;
 
